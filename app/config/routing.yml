@@ -1,0 +1,4 @@
+keboola_jsonparser_api:
+    resource: "@KeboolaJsonparserApiBundle/Resources/config/routing.yml"
+    prefix:   /
+

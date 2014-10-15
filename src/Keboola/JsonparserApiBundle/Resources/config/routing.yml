@@ -1,0 +1,5 @@
+keboola_jsonparser_api_convert:
+    path:     /convert
+    defaults: { _controller: KeboolaJsonparserApiBundle:Api:convert }
+    requirements:
+        _method:  POST
