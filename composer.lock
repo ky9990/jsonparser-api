@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "077b5b87661f2f1542b25b24f6f0dc6f",
+    "hash": "2d5ba4e8f7ec45e7f8d91742dae4cd7c",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -751,22 +751,22 @@
         },
         {
             "name": "keboola/json-parser",
-            "version": "0.1.1",
+            "version": "0.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/keboola/php-jsonparser.git",
-                "reference": "d7fa1b5f11aca42a38dd1238e2b404abcc0e1155"
+                "reference": "1e79609478b6820098af794f8e5170208903c0e7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/keboola/php-jsonparser/zipball/d7fa1b5f11aca42a38dd1238e2b404abcc0e1155",
-                "reference": "d7fa1b5f11aca42a38dd1238e2b404abcc0e1155",
+                "url": "https://api.github.com/repos/keboola/php-jsonparser/zipball/1e79609478b6820098af794f8e5170208903c0e7",
+                "reference": "1e79609478b6820098af794f8e5170208903c0e7",
                 "shasum": ""
             },
             "require": {
                 "keboola/php-csvtable": "~0.1.0",
                 "keboola/php-temp": "~0.1.0",
-                "keboola/php-utils": "~0.1.0",
+                "keboola/php-utils": "~0.1.2",
                 "monolog/monolog": ">=1.8.0"
             },
             "require-dev": {
@@ -796,7 +796,7 @@
                 "json2csv",
                 "parser"
             ],
-            "time": "2014-10-08 07:24:40"
+            "time": "2014-10-16 07:46:22"
         },
         {
             "name": "keboola/php-csvtable",
