@@ -5,3 +5,4 @@ S3 upload option
 	- mail temp. URL
 Limit JSON size in parameters.yml
 Download JSON from URL
+Upload .zip
