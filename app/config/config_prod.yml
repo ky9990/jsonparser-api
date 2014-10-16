@@ -16,6 +16,6 @@ monolog:
         syslog:
             ident: %app_name%
             type: syslog
-            level: info
+            level: debug
             channels: app
             formatter: syrup.monolog.json_formatter
