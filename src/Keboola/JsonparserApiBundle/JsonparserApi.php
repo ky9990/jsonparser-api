@@ -30,7 +30,7 @@ class JsonparserApi
 		}
 
 		foreach($parser->getCsvFiles() as $csvFile) {
-			$logger->info("Adding " . $csvFile->getName() . "into {$resultPathName}");
+			$logger->info("Adding " . $csvFile->getName() . " into {$resultPathName}");
 			$archive->addFile($csvFile->getPathName(), $csvFile->getName());
 		}
 		$archive->close();
