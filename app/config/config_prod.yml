@@ -15,7 +15,7 @@ monolog:
     handlers:
         syslog:
             ident: %app_name%
-            type: syslog
+            type: stream
             level: debug
             bubble: false
-            formatter: syrup.monolog.json_formatter
+            path: ../symfony-%app_name%.log
