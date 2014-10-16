@@ -53,7 +53,7 @@ class ApiController extends Controller
 		$response->headers->set('Content-length', filesize($result["pathname"]));
 
 		// Send headers before outputting anything
-// 		$response->sendHeaders();
+		$response->sendHeaders();
 
 		$response->setContent(readfile($result["pathname"]));
 
