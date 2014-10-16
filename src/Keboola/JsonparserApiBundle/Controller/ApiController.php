@@ -22,10 +22,6 @@ class ApiController extends Controller
 	 */
     public function convertAction(Request $request)
     {
-
-/** @var Symfony\Component\HttpFoundation\ParameterBag $params */
-$params = $request->request;
-
 		if ($request->getContentType() == "json") {
 		// for JSON in a request body
 			$data = $request->getContent();
