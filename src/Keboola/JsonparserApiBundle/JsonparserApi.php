@@ -53,7 +53,7 @@ class JsonparserApi
 
 		foreach($files as $csvFile) {
 // 			$logger->info("Adding " . $csvFile->getName() . " into {$resultPathName}");
-			$archive->addFile($csvFile->getPathName(), $csvFile->getName());
+			$archive->addFile($csvFile->getPathName(), $csvFile->getName() . ".csv");
 		}
 		$archive->close();
 

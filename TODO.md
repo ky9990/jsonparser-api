@@ -7,3 +7,5 @@ S3 upload option
 Limit JSON size in parameters.yml
 Download JSON from URL
 Upload .zip
+Exception listener
+Name the "root" by input file if present!
