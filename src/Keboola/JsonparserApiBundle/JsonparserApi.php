@@ -20,6 +20,28 @@ class JsonparserApi
 
 		$parser->process($data);
 
+		return $this->zipResults($parser->getCsvFiles());
+	}
+
+	public function processLineDelimited(\SplFileObject $file)
+	{
+		$logger = new Logger('jsonparser');
+		/** @type Parser $parser */
+		$parser = new Parser($logger);
+
+		while (!$file->eof()) {
+			$data = Utils::json_decode($file->fgets());
+			if (!is_array($data)) {
+				$data = array($data);
+			}
+			$parser->process($data);
+		}
+
+		return $this->zipResults($parser->getCsvFiles());
+	}
+
+	protected function zipResults($files)
+	{
 		$temp = new Temp('jsonparser');
 		$archive = new \ZipArchive();
 		$resultFile = $temp->createFile("/results.zip");
@@ -29,8 +51,8 @@ class JsonparserApi
 			throw new \RuntimeException("Failed creating a ZIP archive!");
 		}
 
-		foreach($parser->getCsvFiles() as $csvFile) {
-			$logger->info("Adding " . $csvFile->getName() . " into {$resultPathName}");
+		foreach($files as $csvFile) {
+// 			$logger->info("Adding " . $csvFile->getName() . " into {$resultPathName}");
 			$archive->addFile($csvFile->getPathName(), $csvFile->getName());
 		}
 		$archive->close();

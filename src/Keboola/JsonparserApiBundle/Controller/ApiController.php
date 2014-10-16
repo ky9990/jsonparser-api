@@ -20,8 +20,8 @@ class ApiController extends Controller
 	/**
 	 * @param Request $request
 	 */
-    public function convertAction(Request $request)
-    {
+	public function convertAction(Request $request)
+	{
 		if ($request->getContentType() == "json") {
 		// for JSON in a request body
 			$data = $request->getContent();
@@ -44,6 +44,28 @@ class ApiController extends Controller
 		$api = new JsonparserApi();
 		$result = $api->process($data);
 
+		return $this->returnFileResponse($result);
+	}
+
+	public function convertLineDelimitedAction(Request $request)
+	{
+		if (array() == $request->files->all()) {
+			throw new HttpException(400, "No files have been attached in the form-data");
+		}
+		if (count($request->files->all()) > 1) {
+			throw new HttpException(400, "Only one file at a time is supported using form-data");
+		}
+
+		$file = array_values($request->files->all())[0];
+
+		$api = new JsonparserApi();
+		$result = $api->processLineDelimited($file->openFile('r'));
+
+		return $this->returnFileResponse($result);
+	}
+
+	protected function returnFileResponse($result)
+	{
 		$response = new Response();
 
 		// Set headers
@@ -62,5 +84,5 @@ class ApiController extends Controller
 		$response->setContent(readfile($result["pathname"]));
 
 		return $response;
-    }
+	}
 }
