@@ -9,3 +9,15 @@ keboola_jsonparser_api_convert_line_delimited:
     defaults: { _controller: KeboolaJsonparserApiBundle:Api:convertLineDelimited }
     requirements:
         _method:  POST
+
+keboola_jsonparser_api_get:
+    path:     /convert
+    defaults: { _controller: KeboolaJsonparserApiBundle:Api:get }
+    requirements:
+        _method:  GET
+
+keboola_jsonparser_api_get_line_delimited:
+    path:     /convert-line-delimited
+    defaults: { _controller: KeboolaJsonparserApiBundle:Api:get, ld: true }
+    requirements:
+        _method:  GET

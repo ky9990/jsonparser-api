@@ -6,9 +6,13 @@ use Keboola\Json\Parser;
 use Keboola\Utils\Utils;
 use Keboola\Temp\Temp;
 use Monolog\Logger;
+Use GuzzleHttp\Client as Guzzle;
 
 class JsonparserApi
 {
+	/** @var Temp */
+	protected $temp;
+
 	public function process($json) {
 		$logger = new Logger('jsonparser');
 		$parser = new Parser($logger);
@@ -40,9 +44,26 @@ class JsonparserApi
 		return $this->zipResults($parser->getCsvFiles());
 	}
 
+	public function processFromUrl($url, $delimited = false)
+	{
+		$temp = $this->getTemp();
+		$file = $temp->createTmpFile();
+		$guzzle = new Guzzle();
+		$guzzle->get(
+			$url,
+			[ 'save_to' => $file->getPathName() ]
+		);
+
+		if (!$delimited) {
+			return $this->process(file_get_contents($file->getPathName()));
+		} else {
+			return $this->processLineDelimited($file->openFile('r'));
+		}
+	}
+
 	protected function zipResults($files)
 	{
-		$temp = new Temp('jsonparser');
+		$temp = $this->getTemp();
 		$archive = new \ZipArchive();
 		$resultFile = $temp->createFile("/results.zip");
 		$resultPathName = $resultFile->getPathName();
@@ -62,5 +83,17 @@ class JsonparserApi
 			"name" => "results.zip",
 			"temp" => $temp // workaround to prevent deletion. Hints at using S3 as a better option?
 		);
+	}
+
+	/**
+	 * @return Temp
+	 */
+	protected function getTemp()
+	{
+		if (empty($this->temp)) {
+			$this->temp = new Temp('jsonparser');
+		}
+
+		return $this->temp;
 	}
 }

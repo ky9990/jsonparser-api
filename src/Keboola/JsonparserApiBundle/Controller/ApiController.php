@@ -16,7 +16,6 @@ use Keboola\JsonparserApiBundle\JsonparserApi;
  */
 class ApiController extends Controller
 {
-
 	/**
 	 * @param Request $request
 	 */
@@ -60,6 +59,19 @@ class ApiController extends Controller
 
 		$api = new JsonparserApi();
 		$result = $api->processLineDelimited($file->openFile('r'));
+
+		return $this->returnFileResponse($result);
+	}
+
+	/**
+	 * @param Request $request
+	 */
+	public function getAction(Request $request, $ld = false)
+	{
+		parse_str($request->getQueryString(), $query);
+		$url = urldecode($query['url']);
+		$api = new JsonparserApi();
+		$result = $api->processFromUrl($url, true);
 
 		return $this->returnFileResponse($result);
 	}
