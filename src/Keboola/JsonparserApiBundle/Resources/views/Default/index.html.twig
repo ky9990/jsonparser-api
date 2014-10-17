@@ -1,1 +1,16 @@
-Hello {{ name }}!
+<html>
+<body>
+
+<fieldset>
+	<legend>Line delimited JSON</legend>
+	Upload file
+	<form method="post" action="/convert-line-delimited" enctype="multipart/form-data">
+	<input name="uploads" type="file">
+	<input type="submit" value="Send">
+	</form>
+	Url
+	<form method="get" action="/convert-line-delimited">
+	<input name="url" type="url">
+	<input type="submit" value="Send">
+	</form>
+</fieldset></body></html>

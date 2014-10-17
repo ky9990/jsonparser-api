@@ -1,3 +1,9 @@
+keboola_jsonparser_api_index:
+    path:     /
+    defaults: { _controller: KeboolaJsonparserApiBundle:Default:index }
+    requirements:
+        _method:  GET
+
 keboola_jsonparser_api_convert:
     path:     /convert
     defaults: { _controller: KeboolaJsonparserApiBundle:Api:convert }
