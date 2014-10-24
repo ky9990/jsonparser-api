@@ -1,16 +1,66 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>JSON Parser</title>
+
+    <!-- Bootstrap -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/app.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
 <body>
 
-<fieldset>
-	<legend>Line delimited JSON</legend>
-	Upload file
-	<form method="post" action="/convert-line-delimited" enctype="multipart/form-data">
-	<input name="uploads" type="file">
-	<input type="submit" value="Send">
-	</form>
-	Url
-	<form method="get" action="/convert-line-delimited">
-	<input name="url" type="url">
-	<input type="submit" value="Send">
-	</form>
-</fieldset></body></html>
+
+
+<div class="container">
+    <div class="jumbotron">
+        <h1>JSON Parser</h1>
+        <p class="lead">Convert JSON to CSV</p>
+        <small class="pull-right">Powered by Keboola</small>
+    </div>
+
+    <form class="form-horizontal form-file" role="form" method="post" action="convert-line-delimited" enctype="multipart/form-data">
+
+        <div class="form-group">
+            <label for="file" class="col-sm-2 control-label">JSON file</label>
+            <div class="col-sm-10">
+                <input type="file" class="form-control" id="file" name="uploads">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-default">Convert</button>
+            </div>
+        </div>
+    </form>
+
+    <form class="form-horizontal form-url" role="form" method="post" action="convert-line-delimited">
+        <div class="form-group">
+            <label for="file" class="col-sm-2 control-label">URL</label>
+            <div class="col-sm-10">
+                <input type="url" class="form-control" id="file" name="url" placeholder="http://www.example.com/data.json">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-default">Convert</button>
+            </div>
+        </div>
+    </form>
+
+    <h2>Usage</h2>
+    <p class="well">
+        Insert a <strong>JSON file</strong> or a <strong>URL</strong> pointing to a JSON file. JSON Parser will parse the JSON structure and generate as many tables as required by the JSON structure. Nested structure will be output to a separate CSV file. After the JSON file is processed, the browser will download the archive with all CSV files.
+    </p>
+</div>
+</body>
+</html>
