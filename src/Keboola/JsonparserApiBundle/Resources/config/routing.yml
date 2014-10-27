@@ -6,24 +6,12 @@ keboola_jsonparser_api_index:
 
 keboola_jsonparser_api_convert:
     path:     /convert
-    defaults: { _controller: KeboolaJsonparserApiBundle:Api:convert }
-    requirements:
-        _method:  POST
-
-keboola_jsonparser_api_convert_line_delimited:
-    path:     /convert-line-delimited
-    defaults: { _controller: KeboolaJsonparserApiBundle:Api:convertLineDelimited }
-    requirements:
-        _method:  POST
-
-keboola_jsonparser_api_get:
-    path:     /convert
     defaults: { _controller: KeboolaJsonparserApiBundle:Api:get }
     requirements:
         _method:  GET
 
-keboola_jsonparser_api_get_line_delimited:
-    path:     /convert-line-delimited
-    defaults: { _controller: KeboolaJsonparserApiBundle:Api:get, ld: true }
+keboola_jsonparser_api_convert_line_delimited:
+    path:     /convert
+    defaults: { _controller: KeboolaJsonparserApiBundle:Api:post }
     requirements:
-        _method:  GET
+        _method:  POST
