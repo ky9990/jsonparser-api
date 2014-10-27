@@ -6,31 +6,10 @@ FORM {
     -webkit-box-shadow: none;
     box-shadow: none;
     position: relative;
-    padding: 45px 15px 15px;
-    border: 1px solid #ddd;
+    padding: 15px 15px 15px;
     margin-bottom: 15px;
 }
 
-.form-file:after {
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    font-size: 12px;
-    font-weight: 700;
-    color: #959595;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    content: "File";
-}
-
-.form-url:after {
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    font-size: 12px;
-    font-weight: 700;
-    color: #959595;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    content: "Url";
+#navigation {
+    margin-bottom: 15px;
 }
