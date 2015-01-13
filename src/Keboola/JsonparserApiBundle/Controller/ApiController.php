@@ -51,8 +51,8 @@ class ApiController extends Controller
                 throw new HttpException(400, "No files have been attached in the form-data");
             }
 			$file = array_values($request->files->all())[0];
-			if ($file->getClientSize() > 2*1024*1024) { // FIXME parameters.yml bsns
-				throw new HttpException(400, "Uploaded file exceeded 2MB");
+			if ($file->getClientSize() > 10*1024*1024) { // FIXME parameters.yml bsns
+				throw new HttpException(400, "Uploaded file exceeded 10MB");
 			}
             $file = array_values($request->files->all())[0];
             if ($linedelimited) {
