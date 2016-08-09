@@ -109,10 +109,14 @@ class ApiController extends Controller
             $linedelimited = true;
         }
    		$api = new JsonparserApi();
-   		$result = $api->processFromUrl($url, $linedelimited);
 
-   		return $this->returnFileResponse($result);
-   	}
+        try {
+            $result = $api->processFromUrl($url, $linedelimited);
+            return $this->returnFileResponse($result);
+        } catch (\Exception $e) {
+            throw new HttpException(400, 'Error on JSON processing: ' . $e->getMessage());
+        }
+    }
 
     /**
      * @param $result
