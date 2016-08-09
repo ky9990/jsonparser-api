@@ -19,3 +19,4 @@ monolog:
             level: debug
             bubble: false
             path: php://stdout
+            formatter: log_formatter

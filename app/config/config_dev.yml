@@ -19,6 +19,7 @@ monolog:
             level: debug
             bubble: false
             path: php://stdout
+            formatter: log_formatter
 
 assetic:
     use_controller: "%use_assetic_controller%"
