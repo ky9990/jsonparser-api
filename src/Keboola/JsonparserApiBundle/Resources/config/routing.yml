@@ -15,3 +15,9 @@ keboola_jsonparser_api_convert_line_delimited:
     defaults: { _controller: KeboolaJsonparserApiBundle:Api:post }
     requirements:
         _method:  POST
+
+keboola_health_check:
+    path: /health-check
+    defaults: { _controller: KeboolaJsonparserApiBundle:Api:health }
+    requirements:
+      _method: GET

@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller,
 	Symfony\Component\HttpFoundation\Response,
 	Symfony\Component\HttpFoundation\Request;
 use Keboola\JsonparserApiBundle\JsonparserApi;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
  * @TODO:
@@ -16,6 +17,15 @@ use Keboola\JsonparserApiBundle\JsonparserApi;
  */
 class ApiController extends Controller
 {
+    public function healthAction(Request $request)
+    {
+        $response = new JsonResponse();
+        $response->setData([
+            'status' => 'ok',
+        ]);
+        return $response;
+    }
+
     /**
      * @param Request $request
      * @return Response
