@@ -8,6 +8,8 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('KeboolaJsonparserApiBundle:Default:index.html.twig');
+        return $this->render('KeboolaJsonparserApiBundle:Default:index.html.twig', [
+            'jsonApiVersion' => JSON_API_VERSION,
+        ]);
     }
 }

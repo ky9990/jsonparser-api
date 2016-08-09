@@ -9,6 +9,8 @@ if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROT
     die();
 }
 
+define('JSON_API_VERSION', file_exists(__DIR__ . '/../VERSION') ? trim(file_get_contents(__DIR__ . '/../VERSION')) : 'dev');
+
 $loader = require_once __DIR__.'/../app/bootstrap.php.cache';
 
 // Use APC for autoloading to improve performance.
