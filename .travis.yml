@@ -22,16 +22,8 @@ before_script:
   - echo $TRAVIS_TAG > VERSION
   - docker -v
   - docker-compose -v
-  - docker-compose build sapi-importer
+  - docker-compose build
 
-script:
-  - env
-  - >
-    docker-compose run
-    --rm
-    -e STORAGE_API_URL=$STORAGE_API_URL
-    -e STORAGE_API_TOKEN=$STORAGE_API_TOKEN
-    http-tests-ci
 
 after_success:
   - docker images
