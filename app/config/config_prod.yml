@@ -13,9 +13,9 @@ imports:
 
 monolog:
     handlers:
-        syslog:
+        file_log:
             ident: %app_name%
             type: stream
             level: debug
             bubble: false
-            path: ../symfony-%app_name%.log
+            path: php://stdout

@@ -1,0 +1,14 @@
+version: '2'
+
+services:
+  json-parser:
+    build: .
+    image: keboola/json-parser
+    ports:
+      - "3002:80"
+  dev:
+    image: keboola/json-parser
+    ports:
+      - "3003:80"
+    volumes:
+      - ./:/var/www/html
