@@ -34,14 +34,28 @@ class ApiController extends Controller
             if ($linedelimited) {
                 throw new HttpException(400, "Line delimited allowed only for file uploads.");
             }
-            $result = $api->process($data);
+
+
+            try {
+                $result = $api->process($data);
+            } catch (\Exception $e) {
+                throw new HttpException(400, 'Error on JSON processing: ' . $e->getMessage());
+            }
+
         } elseif ($request->getContentType() == "json") {
       		// for JSON in a request body
       		$data = $request->getContent();
             if ($linedelimited) {
                 throw new HttpException(400, "Line delimited allowed only for file uploads.");
             }
-            $result = $api->process($data);
+
+
+            try {
+                $result = $api->process($data);
+            } catch (\Exception $e) {
+                throw new HttpException(400, 'Error on JSON processing: ' . $e->getMessage());
+            }
+
         } else {
 		    // JSON as a file attachment
 			if (count($request->files->all()) > 1) {
@@ -55,12 +69,18 @@ class ApiController extends Controller
 				throw new HttpException(400, "Uploaded file exceeded 10MB");
 			}
             $file = array_values($request->files->all())[0];
-            if ($linedelimited) {
-                $result = $api->processLineDelimited($file->openFile('r'));
-            } else {
-                $data = file_get_contents($file->getPathName());
-                $result = $api->process($data);
+
+            try {
+                if ($linedelimited) {
+                    $result = $api->processLineDelimited($file->openFile('r'));
+                } else {
+                    $data = file_get_contents($file->getPathName());
+                    $result = $api->process($data);
+                }
+            } catch (\Exception $e) {
+                throw new HttpException(400, 'Error on JSON processing: ' . $e->getMessage());
             }
+
         }
         return $this->returnFileResponse($result);
 
