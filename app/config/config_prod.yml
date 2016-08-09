@@ -16,7 +16,7 @@ monolog:
         file_log:
             ident: %app_name%
             type: stream
-            level: debug
+            level: error
             bubble: false
             path: php://stdout
             formatter: log_formatter
