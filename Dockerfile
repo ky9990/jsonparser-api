@@ -8,6 +8,7 @@ RUN apt-get install -y zlib1g zlib1g-dev && \
 
 COPY . /var/www/html
 COPY ./php-apache/json-parser.conf /etc/apache2/sites-enabled/json-parser.conf
+COPY ./php-apache/security.conf /etc/apache2/conf-enabled/security.conf
 COPY ./php-apache/php.ini /usr/local/etc/php/php.ini
 
 WORKDIR /var/www/html
@@ -18,6 +19,7 @@ RUN curl -sS https://getcomposer.org/installer | php \
 RUN composer install --prefer-dist --no-interaction
 
 RUN a2enmod rewrite
+RUN a2enmod headers
 RUN a2dissite 000-default
 
 RUN chown -R www-data:www-data /var/www/html/app/cache
